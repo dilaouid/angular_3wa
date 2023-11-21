@@ -1,0 +1,59 @@
+<div class="row content">
+    <div class="col-sm-4">
+      <app-pastrie-details />
+    </div>
+
+    <div class="col-sm-8 pastrie">
+        <h2>{{ titlePage }}</h2>
+        <section *ngIf="pastries.length > 0">
+            <article *ngFor="let pastrie of pastries" class="card on-select">
+            <header class="card-header">
+                <h2>{{ pastrie.ref }}</h2>
+            </header>
+
+            <section class="card-body">
+                <h5 class="card-title">{{ pastrie.name }}</h5>
+                <p class="card-text">{{ pastrie.description }}</p>
+
+                <ul class="d-flex list-unstyled" *ngIf="pastrie.tags && pastrie.tags.length > 0">
+                <li class="bg-info text-light m-2 p-2 rounded" *ngFor="let tag of pastrie.tags">
+                    {{ tag }}
+                </li>
+                </ul>
+
+                <a href="#" class="btn btn-primary"> Desc >> </a>
+
+                <img class="glyph-icon" src="./assets/svg/si-glyph-heart.svg" />
+                <small>{{ pastrie.like }}</small>
+
+                <img class="glyph-icon" src="./assets/svg/si-glyph-triangle-double-arrow-right.svg" />
+                <small>{{ pastrie.quantity }} unité(s) disponible(s)</small>
+                <small *ngIf="pastrie.choice">[priority]</small>
+
+            </section>
+            </article>
+        </section>
+    </div>
+
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1">Previous</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+  
