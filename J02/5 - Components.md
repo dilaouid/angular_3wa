@@ -38,7 +38,7 @@ Lorsque vous exécutez l'une de ces commandes, plusieurs fichiers sont créés d
 
 - Un fichier TypeScript pour la logique du component (`pastries.component.ts`)
 - Un fichier HTML pour le template (`pastries.component.html`)
-- Un fichier CSS pour les styles (`pastries.component.scss`)
+- Un fichier SCSS pour les styles (`pastries.component.scss`)
 - Un fichier de test (`pastries.component.spec.ts`)
 
 De plus, Angular CLI met à jour automatiquement le fichier `app.module.ts` pour enregistrer ce nouveau component.
