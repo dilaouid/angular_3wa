@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Pastrie } from '../pastrie';
-import { MOCK_PASTRIES } from '../mock-pastries';
+import { Pastrie } from '../interfaces/pastrie';
+import { MOCK_PASTRIES } from '../mocks/pastries';
 
 @Component({
   selector: 'app-pastries',
