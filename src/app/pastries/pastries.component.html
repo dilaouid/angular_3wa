@@ -13,6 +13,8 @@
 
             <section class="card-body">
                 <h5 class="card-title">{{ pastrie.name }}</h5>
+                
+                <button class="btn btn-primary"> Sélectionner >> </button>
                 <p class="card-text">{{ pastrie.description }}</p>
 
                 <ul class="d-flex list-unstyled" *ngIf="pastrie.tags && pastrie.tags.length > 0">
@@ -20,9 +22,7 @@
                     {{ tag }}
                 </li>
                 </ul>
-
-                <a href="#" class="btn btn-primary"> Desc >> </a>
-
+                
                 <img class="glyph-icon" src="./assets/svg/si-glyph-heart.svg" />
                 <small>{{ pastrie.like }}</small>
 
