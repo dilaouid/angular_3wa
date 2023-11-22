@@ -1,5 +1,6 @@
 import { Pastrie } from '../interfaces/pastrie';
 
+export const MAX = 3;
 export const MOCK_PASTRIES: Pastrie[] = [
   {
     "id": "1",
@@ -7,7 +8,7 @@ export const MOCK_PASTRIES: Pastrie[] = [
     "name": "Fondant supreme",
     "description": "Voluptate mollit consectetur pariatur labore. Quis amet quis minim nulla voluptate amet nisi. Ut sint veniam magna aute velit minim laborum eiusmod mollit dolor laborum. Minim Lorem Lorem pariatur adipisicing laborum tempor consequat est officia proident. Qui consequat duis ipsum minim Lorem cillum in excepteur.\r\n",
     "url": "https://media.istockphoto.com/photos/confectioner-decorating-chocolate-cake-closeup-picture-id1187830875?s=612x612",
-    "quantity": 8,
+    "quantity": 1,
     "order": 1,
     "tags": [
         "sucré",

@@ -1,22 +1,31 @@
-<section class="card">
+<section class="card" *ngIf="pastrie">
     <img
+      *ngIf="pastrie.url"
       class="card-img-top"
-      src="https://media.istockphoto.com/photos/confectioner-decorating-chocolate-cake-closeup-picture-id1187830875?s=612x612"
+      src="{{ pastrie.url }}"
       alt="Pastry Category"
     />
     <section class="card-body">
-      <h5 class="card-title">Pâtisserie</h5>
-      <p class="card-text">Fondant supreme</p>
+      <h5 class="card-title">{{ pastrie.ref }}</h5>
+      <p class="card-text">{{ pastrie.name }}</p>
 
       <button class="btn btn-primary"> Desc >> </button>
+      <button
+        class="btn"
+        [ngClass]="{ 
+          'btn-primary': !pastrie.choice,
+          'btn-danger': pastrie.choice
+        }"
+        [disabled]="count && count === maxLike"
+        (click)="preference(pastrie.id)"> 
+        {{ pastrie.choice ? 'Unlike' : 'Like'}} 
+      </button>
 
     </section>
-    <ul class="list-group">
-      <li class="list-group-item"> ad <span>[FIRST]</span> </li>
-      <li class="list-group-item"> qui </li>
-      <li class="list-group-item"> deserunt </li>
-      <li class="list-group-item"> nulla </li>
-      <li class="list-group-item"> cupidatat </li>
+    <ul class="list-group" *ngIf="ingredients.length > 0">
+      <li class="list-group-item" *ngFor="let ingredient of ingredients">
+        {{ ingredient }}
+      </li>
     </ul>
   </section>
   

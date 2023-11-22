@@ -1,12 +1,23 @@
+<app-search
+  (searchEmitter)="updatePastriesOnSearch($event)"
+/>
 <div class="row content">
     <div class="col-sm-4">
-      <app-pastrie-details />
+      <app-pastrie-details
+        [pastrie]="selectedPastry"
+        [count]="count"
+        [ingredients]="pastryIngredients"
+        (changePreference)="changeParentPreference($event)"
+      ></app-pastrie-details>
     </div>
-
     <div class="col-sm-8 pastrie">
         <h2>{{ titlePage }}</h2>
         <section *ngIf="pastries.length > 0">
-            <article *ngFor="let pastrie of pastries" class="card on-select">
+            <article
+              *ngFor="let pastrie of pastries"
+              class="card on-select"
+              [appBorderCard]="'green'"
+            >
             <header class="card-header">
                 <h2>{{ pastrie.ref }}</h2>
             </header>
@@ -14,21 +25,26 @@
             <section class="card-body">
                 <h5 class="card-title">{{ pastrie.name }}</h5>
                 
-                <button class="btn btn-primary"> Sélectionner >> </button>
+                <button
+                  class="btn btn-primary" 
+                  (click)="onSelect(pastrie)"
+                > Sélectionner >> </button>
                 <p class="card-text">{{ pastrie.description }}</p>
 
                 <ul class="d-flex list-unstyled" *ngIf="pastrie.tags && pastrie.tags.length > 0">
-                <li class="bg-info text-light m-2 p-2 rounded" *ngFor="let tag of pastrie.tags">
-                    {{ tag }}
-                </li>
+                  <li class="bg-info text-light m-2 p-2 rounded" *ngFor="let tag of pastrie.tags">
+                      <span class="badge {{ tag | pastrieTagColor }}">{{ tag }}</span>
+                  </li>
                 </ul>
                 
                 <img class="glyph-icon" src="./assets/svg/si-glyph-heart.svg" />
                 <small>{{ pastrie.like }}</small>
 
                 <img class="glyph-icon" src="./assets/svg/si-glyph-triangle-double-arrow-right.svg" />
-                <small>{{ pastrie.quantity }} unité(s) disponible(s)</small>
-                <small *ngIf="pastrie.choice">[priority]</small>
+                <small>{{ pastrie.quantity }} {{ pastrie.quantity > 1 ? 'unités disponibles' : 'unité disponible' }}</small>
+                <small>
+                  {{ pastrie.choice ? '[ LIKED ]' : '[ UNLIKED ]' }}
+                </small>
 
             </section>
             </article>
@@ -37,20 +53,20 @@
 
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-          <a class="page-link" href="#" tabindex="-1">Previous</a>
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <a class="page-link" href="#" tabindex="-1" (click)="loadPage(currentPage - 1)">Previous</a>
         </li>
-        <li class="page-item">
-          <a class="page-link" href="#">1</a>
+        <li class="page-item" [class.active]="currentPage === 1">
+          <a class="page-link" href="#" (click)="loadPage(1)">1</a>
         </li>
-        <li class="page-item">
-          <a class="page-link" href="#">2</a>
+        <li class="page-item" [class.active]="currentPage === 2">
+          <a class="page-link" href="#" (click)="loadPage(2)">2</a>
         </li>
-        <li class="page-item">
-          <a class="page-link" href="#">3</a>
+        <li class="page-item" [class.active]="currentPage === 3">
+          <a class="page-link" href="#" (click)="loadPage(3)">3</a>
         </li>
-        <li class="page-item">
-          <a class="page-link" href="#">Next</a>
+        <li class="page-item" [class.disabled]="currentPage === 3">
+          <a class="page-link" href="#" (click)="loadPage(currentPage + 1)">Next</a>
         </li>
       </ul>
     </nav>

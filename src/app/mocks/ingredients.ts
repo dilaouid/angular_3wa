@@ -1,4 +1,6 @@
-/* export const INGREDIENTS_LISTS: List[]  = [
+import { List } from "../interfaces/list";
+
+export const INGREDIENTS_LISTS: List[]  = [
     {
         "id": "1",
         "list": [
@@ -77,4 +79,4 @@
             "nostrud"
         ]
     }
-]; */
+];
