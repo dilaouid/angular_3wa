@@ -102,6 +102,8 @@ Exemple avec une date:
 {{ today | date:'fullDate' }}
 ```
 
+Vous pouvez voir la documentation complète des pipes intégrés nativement [ici](https://angular.io/api?type=pipe).
+
 ---
 
 ### `ngOnInit`
