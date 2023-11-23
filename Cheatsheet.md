@@ -2,14 +2,13 @@
 
 ## Table des Matières
 
-1. [Introduction](#introduction)
-2. [`@Input()`](#input)
-3. [`@Output()`](#output)
-4. [Pipe](#pipe)
-5. [`ngOnInit`](#ngoninit)
-6. [Directives d'Attributs](#directives-dattributs)
-7. [Directives Structurelles](#directives-structurelles)
-8. [Classes/Attributs HTML Conditionnels](#classesattributs-html-conditionnels)
+1. [`@Input()`](#input)
+2. [`@Output()`](#output)
+3. [Pipe](#pipe)
+4. [`ngOnInit`](#ngoninit)
+5. [Directives d'Attributs](#directives-dattributs)
+6. [Directives Structurelles](#directives-structurelles)
+7. [Classes/Attributs HTML Conditionnels](#classesattributs-html-conditionnels)
 
 ### `@Input()`
 
