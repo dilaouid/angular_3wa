@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Pastrie } from '../../../interfaces/pastrie';
 import { MAX } from '../../../mocks/pastries';
+import { PastriePreferenceService } from '../../../services/pastrie-preference.service';
 
 @Component({
   selector: 'app-pastrie-details',
@@ -11,15 +12,14 @@ export class PastrieDetailsComponent {
   @Input() pastrie: Pastrie | undefined;
   @Input() count: number = 0
   @Input() ingredients: string[] = [];
-  @Output() changePreference = new EventEmitter<string>();
   maxLike: number = MAX;
 
-  constructor() { }
+  constructor(private preferenceService: PastriePreferenceService) { }
 
   ngOnChanges() { }
 
   preference(id: string) {
-    this.changePreference.emit(id);
+    this.preferenceService.changePreference(id);
   }
 
 }

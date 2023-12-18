@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Pastrie } from '../../../interfaces/pastrie';
 import { MAX } from '../../../mocks/pastries';
 import { PastrieService } from '../../../services/pastrie.service';
+import { PastriePreferenceService } from '../../../services/pastrie-preference.service';
 
 @Component({
   selector: 'app-pastries',
@@ -22,10 +23,18 @@ export class PastriesComponent implements OnInit {
 
   titlePage: string = 'Page principale : liste des pâtisseries à gagner';
 
-  constructor(private pastrieService: PastrieService) { }
+  constructor(
+    private pastrieService: PastrieService,
+    private preferenceService: PastriePreferenceService
+    ) { }
 
   ngOnInit(): void {
     this.loadPage(this.currentPage);
+    this.preferenceService.preferenceChanged$.subscribe(pastrieId => {
+      if (pastrieId) {
+        this.changeParentPreference(pastrieId)
+      }
+    })
   }
 
   updatePastriesOnSearch(pastries: Pastrie[]) {
