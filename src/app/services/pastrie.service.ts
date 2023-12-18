@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { MOCK_PASTRIES } from './mocks/pastries';
-import { Pastrie } from './interfaces/pastrie';
-import { List } from './interfaces/list';
-import { INGREDIENTS_LISTS } from './mocks/ingredients';
+import { MOCK_PASTRIES } from '../mocks/pastries';
+import { Pastrie } from '../interfaces/pastrie';
+import { List } from '../interfaces/list';
+import { INGREDIENTS_LISTS } from '../mocks/ingredients';
 
 @Injectable({
   providedIn: 'root'

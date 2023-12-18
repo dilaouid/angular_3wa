@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Pastrie } from '../interfaces/pastrie';
-import { MAX } from '../mocks/pastries';
-import { PastrieService } from '../pastrie.service';
+import { Pastrie } from '../../../interfaces/pastrie';
+import { MAX } from '../../../mocks/pastries';
+import { PastrieService } from '../../../services/pastrie.service';
 
 @Component({
   selector: 'app-pastries',

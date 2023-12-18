@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { PastrieService } from '../pastrie.service';
-import { Pastrie } from '../interfaces/pastrie';
+import { PastrieService } from '../../../services/pastrie.service';
+import { Pastrie } from '../../../interfaces/pastrie';
 
 @Component({
   selector: 'app-search',

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Pastrie } from '../interfaces/pastrie';
-import { MAX } from '../mocks/pastries';
+import { Pastrie } from '../../../interfaces/pastrie';
+import { MAX } from '../../../mocks/pastries';
 
 @Component({
   selector: 'app-pastrie-details',
