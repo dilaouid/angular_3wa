@@ -1,4 +1,4 @@
-import express, { request } from "express";
+import express from "express";
 import { INGREDIENTS_LISTS } from "../../mock/ingredients.js";
 import { Ingredient } from "../../models/Ingredient.js";
 import { checkToken } from "../../middlewares/index.js";

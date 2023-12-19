@@ -2,7 +2,6 @@ import express from "express";
 import { connect } from "./mongoose/index.js";
 import routes from "./routes/index.js";
 import cors from 'cors';
-import jwt from 'jsonwebtoken';
 
 const PORT = 8000; // port sur lequel je vais écouter
 
@@ -19,13 +18,6 @@ connect(); // je me connecte à la base de données
 // routes définies dans routes/index.js seront
 // préfixées par /api
 app.use('/api', routes);
-
-/* app.get("/", (request, response) => {
-    response.status(200).json({
-        data: ["Hello", "World"],
-        message: "OK c'est bon"
-    });
-}); */
 
 // Gérer la page 404 de notre petit serveur
 app.get('*', (request, response) => {
