@@ -9,4 +9,5 @@ export interface Pastrie {
     tags?: string[];
     url?: string;
     choice? : boolean;
+    pastryId: string;
 };

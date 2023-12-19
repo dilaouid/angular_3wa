@@ -15,13 +15,22 @@ ingredients.get('/', (request, response) => {
 });
 
 // localhost:8000/api/ingredients/seed
-/* ingredients.get('/seed', (request, response) => {
+ingredients.get('/seed', (request, response) => {
     Ingredient.insertMany(INGREDIENTS_LISTS).then(ingredients => 
         response.status(200).json({data: ingredients, message: 'OK!'})
     ).catch(err => {
         response.status(400).json(err);
     });
-}); */
+});
+
+// localhost:8000/api/ingredients/clear
+ingredients.get('/clear', (request, response) => {
+    Ingredient.deleteMany({}).then(() => 
+        response.status(200).json({message: 'OK!'})
+    ).catch(err => {
+        response.status(400).json(err);
+    });
+})
 
 // localhost:8000/api/ingredients/:id
 ingredients.get('/:id', (request, response) => {
@@ -36,5 +45,15 @@ ingredients.get('/:id', (request, response) => {
         response.status(400).json(err);
     })
 });
+
+ingredients.get('/pastrie/:id', (request, response) => {
+    const { id } = request.params;
+
+    Ingredient.findOne({ pastryId: id }).then(ingredients => {
+        response.status(200).json(ingredients);
+    }).catch(err => {
+        response.status(400).json(err);
+    })
+})
 
 export default ingredients

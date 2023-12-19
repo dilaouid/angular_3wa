@@ -7,6 +7,7 @@ import mongoose from "mongoose";
 // et leurs types
 const IngredientsSchema = new mongoose.Schema({
     list: [String],
+    pastryId: String
 });
 
 export const Ingredient = mongoose.model(

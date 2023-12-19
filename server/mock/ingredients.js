@@ -6,7 +6,8 @@ export const INGREDIENTS_LISTS = [
             "deserunt",
             "nulla",
             "cupidatat"
-        ]
+        ],
+        "pastryId": "1"
     },
     {
         "list": [
@@ -14,7 +15,8 @@ export const INGREDIENTS_LISTS = [
             "nostrud",
             "aliqua",
             "sunt"
-        ]
+        ],
+        "pastryId": "2"
     },
     {
         "list": [
@@ -25,14 +27,16 @@ export const INGREDIENTS_LISTS = [
             "sunt",
             "Lorem",
             "laborum"
-        ]
+        ],
+        "pastryId": "3"
     },
     {
         "list": [
             "nulla",
             "velit",
             "do"
-        ]
+        ],
+        "pastryId": "4"
     },
     {
         "list": [
@@ -43,7 +47,8 @@ export const INGREDIENTS_LISTS = [
             "eu",
             "irure",
             "dolore"
-        ]
+        ],
+        "pastryId": "5"
     },
     {
         "list": [
@@ -54,19 +59,22 @@ export const INGREDIENTS_LISTS = [
             "consequat",
             "duis",
             "elit"
-        ]
+        ],
+        "pastryId": "6"
     },
     {
         "list": [
             "in",
             "nostrud",
             "deserunt"
-        ]
+        ],
+        "pastryId": "7"
     },
     {
         "list": [
             "in",
             "nostrud"
-        ]
+        ],
+        "pastryId": "8"
     }
 ];

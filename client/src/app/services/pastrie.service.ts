@@ -1,37 +1,33 @@
 import { Injectable } from '@angular/core';
-import { MOCK_PASTRIES } from '../mocks/pastries';
 import { Pastrie } from '../interfaces/pastrie';
-import { List } from '../interfaces/list';
-import { INGREDIENTS_LISTS } from '../mocks/ingredients';
+
+import { HttpClient } from '@angular/common/http';
+
+const PASTRY_API_URL = 'http://localhost:8000/api/pastries';
+const INGREDIENTS_API_URL = 'http://localhost:8000/api/ingredients';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PastrieService {
-  private pastries: Pastrie[] = MOCK_PASTRIES;
-  private ingredients: List[] = INGREDIENTS_LISTS;
+  private pastries: Pastrie[] = [];
 
-  constructor() { }
-
-  getPastries() {
-    return this.pastries;
-  }
+  constructor(private http: HttpClient) { }
 
   getPastrieById(id: string) {
-    return this.pastries.find((p) => p.id == id);
+    return this.http.get<Pastrie>(PASTRY_API_URL + '/' + id);
   }
 
   count(): number {
     return this.pastries.length;
   }
 
-  getPastrieIngredients(id: string): string[] {
-    let ingredients = this.ingredients.find((i) => i.id == id);
-    return ingredients ? ingredients.list : [];
+  getPastrieIngredients(id: string) {
+    return this.http.get<any>(`${INGREDIENTS_API_URL}/pastrie/${id}`);
   }
 
-  paginate(start: number, end: number): Pastrie[] {
-    return this.pastries.slice(start, end);
+  paginate(start: number, end: number) {
+    return this.http.get<Pastrie[]>(`${PASTRY_API_URL}?limit=${end}&start=${start}`);
   }
 
   search(keyword: string): Pastrie[] {

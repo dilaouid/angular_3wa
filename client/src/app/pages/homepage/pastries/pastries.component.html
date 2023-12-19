@@ -56,19 +56,19 @@
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
         <li class="page-item" [class.disabled]="currentPage === 1">
-          <a class="page-link" href="#" tabindex="-1" (click)="loadPage(currentPage - 1)">Previous</a>
+          <a class="page-link" tabindex="-1" (click)="loadPage(currentPage - 1)">Previous</a>
         </li>
         <li class="page-item" [class.active]="currentPage === 1">
-          <a class="page-link" href="#" (click)="loadPage(1)">1</a>
+          <a class="page-link" (click)="loadPage(1)">1</a>
         </li>
         <li class="page-item" [class.active]="currentPage === 2">
-          <a class="page-link" href="#" (click)="loadPage(2)">2</a>
+          <a class="page-link" (click)="loadPage(2)">2</a>
         </li>
         <li class="page-item" [class.active]="currentPage === 3">
-          <a class="page-link" href="#" (click)="loadPage(3)">3</a>
+          <a class="page-link" (click)="loadPage(3)">3</a>
         </li>
         <li class="page-item" [class.disabled]="currentPage === 3">
-          <a class="page-link" href="#" (click)="loadPage(currentPage + 1)">Next</a>
+          <a class="page-link" (click)="loadPage(currentPage + 1)">Next</a>
         </li>
       </ul>
     </nav>

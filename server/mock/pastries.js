@@ -12,7 +12,8 @@ export const MOCK_PASTRIES = [
           "dessert"
       ],
       "like": "Much",
-      "choice" : false
+      "choice" : false,
+      "pastryId": "1"
   },
   {
       "ref": "Pâtisserie",
@@ -28,7 +29,8 @@ export const MOCK_PASTRIES = [
           "chocolat"
       ],
       "like": "Much",
-      "choice" : false
+      "choice" : false,
+      "pastryId": "2"
   },
   {
       "ref": "Pâtisserie",
@@ -44,7 +46,8 @@ export const MOCK_PASTRIES = [
           "chocolat",
           "framboises"
       ],
-      "choice" : false
+      "choice" : false,
+      "pastryId": "3"
   },
   {
       "ref": "Viennoiserie",
@@ -58,7 +61,8 @@ export const MOCK_PASTRIES = [
           "yummy"
       ],
       "like": "rather",
-      "choice" : false
+      "choice" : false,
+      "pastryId": "4"
   },
   {
       "ref": "Pâtisserie glacée",
@@ -68,7 +72,8 @@ export const MOCK_PASTRIES = [
       "quantity": 2,
       "order": 5,
       "like": "Rather",
-      "choice" : false
+      "choice" : false,
+      "pastryId": "5"
   },
   {
       "ref": "Pâtisserie",
@@ -83,7 +88,8 @@ export const MOCK_PASTRIES = [
           "chocolat"
       ],
       "like": "Much",
-      "choice" : false
+      "choice" : false,
+      "pastryId": "6"
   },
   {
       "ref": "Pâtisserie",
@@ -100,7 +106,8 @@ export const MOCK_PASTRIES = [
           "fruits"
       ],
       "like": "Much",
-      "choice" : false
+      "choice" : false,
+      "pastryId": "7"
   },
   {
       "ref": "Pâtisserie glacée",
@@ -115,6 +122,7 @@ export const MOCK_PASTRIES = [
           "fruits"
       ],
       "like": "Much",
-      "choice" : false
+      "choice" : false,
+      "pastryId": "8"
   },
   ];

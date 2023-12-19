@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Pastrie } from '../../../interfaces/pastrie';
-import { MAX } from '../../../mocks/pastries';
 import { PastriePreferenceService } from '../../../services/pastrie-preference.service';
 
 @Component({
@@ -12,7 +11,7 @@ export class PastrieDetailsComponent {
   @Input() pastrie: Pastrie | undefined;
   @Input() count: number = 0
   @Input() ingredients: string[] = [];
-  maxLike: number = MAX;
+  maxLike: number = 3;
 
   constructor(private preferenceService: PastriePreferenceService) { }
 

@@ -1,11 +1,16 @@
 import express from "express";
 import { connect } from "./mongoose/index.js";
 import routes from "./routes/index.js";
+import cors from 'cors';
 
 const PORT = 8000; // port sur lequel je vais écouter
 
 const app = express(); // j'initialise / j'instancie mon serveur
 app.use(express.json()); // je suis sur que ca va me retourné un json
+app.use(cors({
+    origin: 'http://localhost:4200',
+    credentials: true
+}))
 
 connect(); // je me connecte à la base de données
 

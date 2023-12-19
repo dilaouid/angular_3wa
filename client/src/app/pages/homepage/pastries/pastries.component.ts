@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Pastrie } from '../../../interfaces/pastrie';
-import { MAX } from '../../../mocks/pastries';
 import { PastrieService } from '../../../services/pastrie.service';
 import { PastriePreferenceService } from '../../../services/pastrie-preference.service';
 
@@ -44,21 +43,28 @@ export class PastriesComponent implements OnInit {
   loadPage(page: number) {
     const start = (page - 1) * this.itemsPerPage;
     const end = start + this.itemsPerPage;
-    this.pastries = this.pastrieService.paginate(start, end);
+    this.pastrieService.paginate(start, end).subscribe((pastries) => {
+      this.pastries = pastries;
+    });
     this.currentPage = page;
   }
 
   onSelect(pastrie: Pastrie) {
     this.selectedPastry = pastrie;
-    this.pastryIngredients = this.pastrieService.getPastrieIngredients(pastrie.id);
+
+    this.pastrieService.getPastrieIngredients(pastrie.pastryId).subscribe((ingredients) => {
+      this.pastryIngredients = ingredients.list;
+    });
   }
 
   changeParentPreference(pastrieId: string) {
-    const pastry: Pastrie | undefined = this.pastrieService.getPastrieById(pastrieId);
+    const pastry: any = this.pastrieService.getPastrieById(pastrieId).subscribe((pastry) => {
+      return pastry;
+    });
     
     if (pastry) {
       pastry.choice = !pastry.choice;
-      if (this.count < MAX && !pastry.choice) {
+      if (this.count < 3 && !pastry.choice) {
         this.count++;
       } else if (this.count > 0 && pastry.choice) {
         this.count--;

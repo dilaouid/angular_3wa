@@ -16,7 +16,8 @@ const PastriesSchema = new mongoose.Schema({
     like: String,
     ingredients: [String],
     date: Date,
-    choice: Boolean
+    choice: Boolean,
+    pastryId: String
 });
 
 export const Pastrie = mongoose.model(
