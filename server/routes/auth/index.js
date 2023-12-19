@@ -1,5 +1,6 @@
 import express from "express";
 import jwt from "jsonwebtoken";
+import { checkToken } from "../../middlewares";
 
 const auth = express();
 
@@ -41,6 +42,19 @@ auth.get('/logout', (request, response) => {
 
     // on envoie une réponse API pour dire que tout est OK
     response.status(200).json({message: 'OK!'});
+});
+
+auth.get('/me', checkToken, (request, response) => {
+    // on récupère le token dans le cookie
+    const token = request.cookies.token;
+
+    // on vérifie que le token est valide
+    try {
+        const verified = jwt.verify(token, SECRET);
+        response.status(200).json(verified);
+    } catch(err) {
+        response.status(400).json(err);
+    }
 });
 
 export default auth;
