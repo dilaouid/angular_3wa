@@ -17,7 +17,7 @@
           'btn-danger': pastrie.choice
         }"
         [disabled]="count && count === maxLike"
-        (click)="preference(pastrie.id)"> 
+        (click)="preference(pastrie._id)"> 
         {{ pastrie.choice ? 'Unlike' : 'Like'}} 
       </button>
 

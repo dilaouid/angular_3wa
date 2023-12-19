@@ -30,7 +30,7 @@
                 > Sélectionner >> </button>
 
 
-                <a class="text-primary" routerLink="/pastrie/{{ pastrie.id }}">Voir plus</a>
+                <a class="text-primary" routerLink="/pastrie/{{ pastrie._id }}">Voir plus</a>
                 <p class="card-text">{{ pastrie.description }}</p>
 
                 <ul class="d-flex list-unstyled" *ngIf="pastrie.tags && pastrie.tags.length > 0">

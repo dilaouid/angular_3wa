@@ -18,10 +18,6 @@ export class PastrieService {
     return this.http.get<Pastrie>(PASTRY_API_URL + '/' + id);
   }
 
-  count(): number {
-    return this.pastries.length;
-  }
-
   getPastrieIngredients(id: string) {
     return this.http.get<any>(`${INGREDIENTS_API_URL}/pastrie/${id}`);
   }
