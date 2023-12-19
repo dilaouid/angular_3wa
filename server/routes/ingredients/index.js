@@ -1,0 +1,40 @@
+import express from "express";
+import { INGREDIENTS_LISTS } from "../../mock/ingredients.js";
+import { Ingredient } from "../../models/Ingredient.js";
+
+const ingredients = express();
+
+// localhost:8000/api/ingredients
+ingredients.get('/', (request, response) => {
+    // on va chopper toutes les ingredients ici
+    Ingredient.find({}).then(ingredients => {
+        response.status(200).json(ingredients);
+    }).catch(err => {
+        response.status(400).json(err);
+    })
+});
+
+// localhost:8000/api/ingredients/seed
+/* ingredients.get('/seed', (request, response) => {
+    Ingredient.insertMany(INGREDIENTS_LISTS).then(ingredients => 
+        response.status(200).json({data: ingredients, message: 'OK!'})
+    ).catch(err => {
+        response.status(400).json(err);
+    });
+}); */
+
+// localhost:8000/api/ingredients/:id
+ingredients.get('/:id', (request, response) => {
+    // destructuring de l'id dans les paramètres de l'url
+    const { id } = request.params;
+
+    Ingredient.findById(id).then(pastrie => {
+        if (!pastrie) // s'il n'y a pas de pastrie avec cet id => 404
+            return response.status(404).json({message: 'Not found'});
+        response.status(200).json(pastrie);
+    }).catch(err => {
+        response.status(400).json(err);
+    })
+});
+
+export default ingredients
