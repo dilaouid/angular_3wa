@@ -2,6 +2,7 @@ import express from "express";
 import { connect } from "./mongoose/index.js";
 import routes from "./routes/index.js";
 import cors from 'cors';
+import cookieParser from "cookie-parser";
 
 const PORT = 8000; // port sur lequel je vais écouter
 
@@ -11,6 +12,7 @@ app.use(cors({
     origin: 'http://localhost:4200',
     credentials: true
 }))
+app.use(cookieParser());
 
 connect(); // je me connecte à la base de données
 

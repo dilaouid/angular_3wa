@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 const SECRET = "fd85g4d5f4g5d4f5645^$ù^ùù*$^$^dsfsç_è-ç_iujhdskjhfkjhsdkjfsdghFGFghJHkjhudf"
 
 export const checkToken = (request, response, next) => {
-    const token = request.headers['authorization']; // eyJhbGciOiJIUzI1Ni...
+    const token = request.cookies.token; // on récupère le token dans le cookie
     if (!token)
         return response.status(401).json({message: 'Unauthorized'});
     try {
