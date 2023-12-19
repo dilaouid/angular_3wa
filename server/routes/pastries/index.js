@@ -49,4 +49,23 @@ pastries.get('/:id', (request, response) => {
     })
 });
 
+// localhost:8000/api/pastries (PUT)
+pastries.put('/:id', (request, response) => {
+    // like ou dislike une pastrie
+    const { id } = request.params;
+
+    Pastrie.findById(id).then(pastrie => {
+        if (!pastrie)
+            return response.status(404).json({message: 'Not found'});
+        pastrie.choice = !pastrie.choice;
+        pastrie.save().then((data) => {
+            response.status(200).json({message: 'OK!', data: data});
+        }).catch(err => {
+            response.status(400).json(err);
+        })
+    }).catch(err => {
+        response.status(400).json(err);
+    });
+});
+
 export default pastries
