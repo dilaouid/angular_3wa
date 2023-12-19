@@ -2,6 +2,7 @@ import express from "express";
 import { connect } from "./mongoose/index.js";
 import routes from "./routes/index.js";
 import cors from 'cors';
+import jwt from 'jsonwebtoken';
 
 const PORT = 8000; // port sur lequel je vais écouter
 
