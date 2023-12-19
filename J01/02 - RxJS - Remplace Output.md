@@ -1,4 +1,4 @@
-# Cours oral
+# Cours
 
 Pour convertir un des `@Input()` ou `@Output()` en Observable dans Angular, nous pouvons utiliser un service Angular et `BehaviorSubject` ou `Subject`. Cela permettra de transformer la communication entre les composants en un flux de données réactif.
 
