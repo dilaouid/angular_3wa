@@ -49,6 +49,20 @@ pastries.get('/:id', (request, response) => {
     })
 });
 
+
+// localhost:8000/api/pastries/search/:name
+pastries.get('/search/:name', (request, response) => {
+    const { name } = request.params;
+
+    // recherche de pastrie par nom (regex pour faire une recherche insensible à la casse,
+    // et qui matche avec une partie du nom)
+    Pastrie.find({ name: { $regex: name, $options: 'i' } }).then(pastries => {
+        response.status(200).json(pastries);
+    }).catch(err => {
+        response.status(400).json(err);
+    })
+});
+
 // localhost:8000/api/pastries (PUT)
 pastries.put('/:id', (request, response) => {
     // like ou dislike une pastrie
@@ -58,8 +72,8 @@ pastries.put('/:id', (request, response) => {
         if (!pastrie)
             return response.status(404).json({message: 'Not found'});
         pastrie.choice = !pastrie.choice;
-        pastrie.save().then((data) => {
-            response.status(200).json({message: 'OK!', data: data});
+        pastrie.save().then(() => {
+            response.status(200).json({message: 'OK!', data: pastrie});
         }).catch(err => {
             response.status(400).json(err);
         })
