@@ -1,6 +1,6 @@
 import express from "express";
 import jwt from "jsonwebtoken";
-import { checkToken } from "../../middlewares";
+import { checkToken } from "../../middlewares/index.js";
 
 const auth = express();
 
