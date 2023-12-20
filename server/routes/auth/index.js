@@ -21,7 +21,7 @@ auth.post('/login', (request, response) => {
     try {
         // création du token JWT
         const token = jwt.sign({}, SECRET, {
-            subject: { user: username },
+            subject: username,
             expiresIn: '1h'
         })
 
