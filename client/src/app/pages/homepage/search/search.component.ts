@@ -16,13 +16,20 @@ export class SearchComponent {
 
   onSubmit(form: NgForm) {
     const word = form.value['word'];
-    const results = this.pastriesService.search(word);
-    this.searchEmitter.emit(results);
+    this.pastriesService.search(word).subscribe(
+      (result) => {
+        this.searchEmitter.emit(result);
+      }
+    )
   }
 
   onSearchChange():void {
-    const results = this.pastriesService.search(this.word);
-    this.searchEmitter.emit(results);
+    this.pastriesService.search(this.word).subscribe({
+      next: (result) => {
+        this.searchEmitter.emit(result);
+      },
+      error: (err) => console.error,
+    })
   }
 
 }

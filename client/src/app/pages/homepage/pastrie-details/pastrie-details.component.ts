@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Pastrie } from '../../../interfaces/pastrie';
-import { PastriePreferenceService } from '../../../services/pastrie-preference.service';
+import { PastrieService } from '../../../services/pastrie.service';
 
 @Component({
   selector: 'app-pastrie-details',
@@ -13,12 +13,16 @@ export class PastrieDetailsComponent {
   @Input() ingredients: string[] = [];
   maxLike: number = 3;
 
-  constructor(private preferenceService: PastriePreferenceService) { }
+  constructor(private pastrieService: PastrieService) { }
 
   ngOnChanges() { }
 
   preference(id: string) {
-    this.preferenceService.changePreference(id);
+    this.pastrieService.like(id).subscribe(
+      (result: any) => {
+        this.pastrie = result.data
+      }
+    )
   }
 
 }

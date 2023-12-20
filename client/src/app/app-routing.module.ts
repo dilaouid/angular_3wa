@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/homepage/home/home.component';
 import { PastrieComponent } from './pages/pastrie/pastrie.component';
 import { LoginComponent } from './pages/login/login.component';
+import { isLoggedIn } from './guards/auth.guard';
 
 const routes: Routes = [
   // Url redirige vers localhost:4200
@@ -13,7 +14,11 @@ const routes: Routes = [
 
   // Url redirige vers localhost:4200/pastrie/(id)
   // pathMatch: full indique que on attends à ce que l'url soit EXACTEMENT comme le path (pas en prefixe)
-  { path: 'pastrie/:id', component: PastrieComponent, pathMatch: 'full' }
+  { path: 'pastrie/:id',
+    component: PastrieComponent,
+    pathMatch: 'full',
+    canActivate: [isLoggedIn]
+   }
 ];
 
 @NgModule({

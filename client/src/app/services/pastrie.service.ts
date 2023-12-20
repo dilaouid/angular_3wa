@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Pastrie } from '../interfaces/pastrie';
 
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, tap } from 'rxjs';
 
 const PASTRY_API_URL = 'http://localhost:8000/api/pastries';
 const INGREDIENTS_API_URL = 'http://localhost:8000/api/ingredients';
@@ -10,7 +11,8 @@ const INGREDIENTS_API_URL = 'http://localhost:8000/api/ingredients';
   providedIn: 'root'
 })
 export class PastrieService {
-  private pastries: Pastrie[] = [];
+  private pastrieUpdated = new BehaviorSubject<Pastrie | null>(null);
+  pastrieUpdated$ = this.pastrieUpdated.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -26,9 +28,17 @@ export class PastrieService {
     return this.http.get<Pastrie[]>(`${PASTRY_API_URL}?limit=${end}&start=${start}`);
   }
 
-  search(keyword: string): Pastrie[] {
+  search(keyword: string) {
     const key = keyword.toLowerCase();
-    return this.pastries.filter((p) => p.name.toLowerCase().includes(key));
+    return this.http.get<Pastrie[]>(`${PASTRY_API_URL}/search/${key}`);
+  }
+
+  like(pastrieId: string) {
+    return this.http.put(`${PASTRY_API_URL}/${pastrieId}`, {}).pipe(
+      tap((result: any) => {
+        this.pastrieUpdated.next(result.data as Pastrie);
+      })
+    )
   }
 
 

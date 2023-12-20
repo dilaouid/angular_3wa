@@ -25,8 +25,8 @@ export class PastrieComponent implements OnInit {
     // get : récupère la valeur de l'id dans la map des paramètres
     const id = this.route.snapshot.paramMap.get('id') ?? '0';
 
-    // même chose pour les query string, mais avec queryParamMap au lieu de paramMap
-    const qs = this.route.snapshot.queryParamMap.get('maquerystring');
-    // this.pastrie = this.pastrieService.getPastrieById(id);
+    this.pastrieService.getPastrieById(id).subscribe((pastrie) => {
+      this.pastrie = pastrie;
+    })
   }
 }

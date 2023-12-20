@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Pastrie } from '../../../interfaces/pastrie';
+import { TitleService } from '../../../services/title.service';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +8,11 @@ import { Pastrie } from '../../../interfaces/pastrie';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  title = 'app-yams';
   pastries: Pastrie[] = [];
 
-  constructor() { }
+  constructor(private titleService: TitleService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.titleService.setTitle('Accueil');
+  }
 }

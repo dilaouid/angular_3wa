@@ -1,1 +1,24 @@
-<p>login works!</p>
+<div class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="username">Nom d'utilisateur</label>
+            <input formControlName="username" type="text" class="form-control" id=""username required>
+            <div *ngIf="loginForm.get('username')?.value && loginForm.get('username')?.errors">
+                <span class="text-danger">Le nom d'utilisateur est obligatoire</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input formControlName="password" type="password" id="password" class="form-control" required>
+            <div *ngIf="loginForm.get('password')?.value && loginForm.get('password')?.errors">
+                <span class="text-danger">Le mot de passe est obligatoire</span>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">
+            Se connecter
+        </button>
+        <span class="text-danger" *ngIf="errorMessage">
+            {{ errorMessage }}
+        </span>
+    </form>
+</div>

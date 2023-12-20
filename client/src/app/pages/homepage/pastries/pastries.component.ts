@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Pastrie } from '../../../interfaces/pastrie';
 import { PastrieService } from '../../../services/pastrie.service';
-import { PastriePreferenceService } from '../../../services/pastrie-preference.service';
 
 @Component({
   selector: 'app-pastries',
@@ -23,17 +22,26 @@ export class PastriesComponent implements OnInit {
   titlePage: string = 'Page principale : liste des pâtisseries à gagner';
 
   constructor(
-    private pastrieService: PastrieService,
-    private preferenceService: PastriePreferenceService
+    private pastrieService: PastrieService
     ) { }
 
   ngOnInit(): void {
     this.loadPage(this.currentPage);
-    this.preferenceService.preferenceChanged$.subscribe(pastrieId => {
-      if (pastrieId) {
-        this.changeParentPreference(pastrieId)
+    this.pastrieService.pastrieUpdated$.subscribe((updatedPastrie) => {
+      if (updatedPastrie) {
+        this.updatePastrieInList(updatedPastrie);
       }
-    })
+    });
+  }
+
+  updatePastrieInList(updatedPastrie: any) {
+    const index = this.pastries.findIndex(
+      (pastrie) => pastrie.pastryId === updatedPastrie.pastryId
+    );
+  
+    if (index !== 1) {
+      this.pastries[index] = updatedPastrie;
+    }
   }
 
   updatePastriesOnSearch(pastries: Pastrie[]) {
@@ -55,19 +63,4 @@ export class PastriesComponent implements OnInit {
       this.pastryIngredients = ingredients.list;
     });
   }
-
-  changeParentPreference(pastrieId: string) {
-    this.pastrieService.getPastrieById(pastrieId).subscribe((pastry) => {
-      if (pastry) {
-        pastry.choice = !pastry.choice;
-        if (this.count < 3 && !pastry.choice) {
-          this.count++;
-        } else if (this.count > 0 && pastry.choice) {
-          this.count--;
-        }
-      }
-    });
-  }
-
-
 }
