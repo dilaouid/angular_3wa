@@ -90,7 +90,7 @@ Aujourd'hui, nous allons plonger dans la création d'un serveur Express avec Mon
    - Ajoutez Mongoose à votre `server.js`:
 
      ```js
-     import "mongoose" from mongoose
+     import mongoose from "mongoose";
 
      mongoose.connect('mongodb://localhost/myDatabase', {
        useNewUrlParser: true,
@@ -110,7 +110,7 @@ Aujourd'hui, nous allons plonger dans la création d'un serveur Express avec Mon
    - Créez un fichier pour votre modèle, par exemple `User.js`:
 
      ```js
-     import "mongoose" from mongoose
+     import mongoose from "mongoose";
 
      const userSchema = new mongoose.Schema({
        name: String,
