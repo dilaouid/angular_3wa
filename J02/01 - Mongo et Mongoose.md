@@ -65,7 +65,7 @@ Aujourd'hui, nous allons plonger dans la création d'un serveur Express avec Mon
 3. **Créer le Serveur Express** (`server.js`):
 
    ```js
-   const express = require('express');
+   import express from "express"
    const app = express();
 
    app.get('/', (req, res) => {
@@ -90,7 +90,7 @@ Aujourd'hui, nous allons plonger dans la création d'un serveur Express avec Mon
    - Ajoutez Mongoose à votre `server.js`:
 
      ```js
-     const mongoose = require('mongoose');
+     import "mongoose" from mongoose
 
      mongoose.connect('mongodb://localhost/myDatabase', {
        useNewUrlParser: true,
@@ -110,10 +110,9 @@ Aujourd'hui, nous allons plonger dans la création d'un serveur Express avec Mon
    - Créez un fichier pour votre modèle, par exemple `User.js`:
 
      ```js
-     const mongoose = require('mongoose');
-     const { Schema } = mongoose;
+     import "mongoose" from mongoose
 
-     const userSchema = new Schema({
+     const userSchema = new mongoose.Schema({
        name: String,
        age: Number,
        email: String
